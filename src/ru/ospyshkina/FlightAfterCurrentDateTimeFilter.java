@@ -4,14 +4,9 @@ import java.time.LocalDateTime;
 
 public class FlightAfterCurrentDateTimeFilter implements FlightFilter {
 
-    private final LocalDateTime currentDateTime;
-
-    public FlightAfterCurrentDateTimeFilter(LocalDateTime currentDateTime) {
-        this.currentDateTime = currentDateTime;
-    }
-
     @Override
     public boolean test(Flight flight) {
-        return currentDateTime.isBefore(flight.getSegments().get(0).getDepartureDate());
+        LocalDateTime departure = flight.getSegments().get(0).getDepartureDate();
+        return LocalDateTime.now().isBefore(departure);
     }
 }
