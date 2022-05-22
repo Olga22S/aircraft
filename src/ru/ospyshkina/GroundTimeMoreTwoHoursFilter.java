@@ -20,9 +20,9 @@ public class GroundTimeMoreTwoHoursFilter implements FlightFilter {
                 groundTime = duration.plus(groundTime);
             }
             if (groundTime.toHours() > 2) {
-                return true;
+                return false;
             }
         }
-        return false;
+        return true;
     }
 }
